@@ -14,13 +14,13 @@ app.use(express.json()); // للسماح للسيرفر بفهم بيانات JS
 
 // 3. إعداد الاتصال بقاعدة البيانات
 const pool = new Pool({
-  user: process.env.DB_USER,
-  host: process.env.DB_HOST,
-  database: process.env.DB_DATABASE,
-  password: process.env.DB_PASSWORD,
-  port: process.env.DB_PORT,
-    connectionString: process.env.DATABASE_URL, 
-});
+  // Railway يوفر هذا المتغير تلقائيًا ويحتوي على كل معلومات الاتصال
+  connectionString: process.env.DATABASE_URL,
+  // هذا السطر ضروري جدًا للاتصال بقواعد البيانات على الخدمات السحابية مثل Railway
+  ssl: {
+    rejectUnauthorized: false
+  }
+});;
 
 // 4. إنشاء نقطة API (Route) تجريبية للتأكد من أن السيرفر يعمل
 app.get('/', (req, res) => {
