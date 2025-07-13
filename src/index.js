@@ -19,6 +19,7 @@ const pool = new Pool({
   database: process.env.DB_DATABASE,
   password: process.env.DB_PASSWORD,
   port: process.env.DB_PORT,
+    connectionString: process.env.DATABASE_URL, 
 });
 
 // 4. إنشاء نقطة API (Route) تجريبية للتأكد من أن السيرفر يعمل
