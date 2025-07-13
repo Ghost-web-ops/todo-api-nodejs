@@ -7,8 +7,9 @@ import express from 'express';
 import { Pool } from 'pg'; // لتحميل مكتبة PostgreSQL
 import cors from 'cors'; // لتحميل مكتبة CORS للسماح بالوصول من مصادر مختلفة
 // 2. إعداد سيرفر Express
+app.use(cors());
 const app = express();
-app.use(cors()); // للسماح بالوصول من مصادر مختلفة
+ // للسماح بالوصول من مصادر مختلفة
 const port = process.env.PORT || 3000;
 app.use(express.json()); // للسماح للسيرفر بفهم بيانات JSON
 
